@@ -51,13 +51,13 @@ export default function DestinationExplorer({ onNext, onBack, tripData }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="trip-step-shell explorer-shell">
 
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-6"
+        className="text-center step-heading mb-6"
       >
         <motion.div
           initial={{ scale: 0 }}

@@ -72,7 +72,7 @@ export default function ActivitiesStep({ onNext, onBack, tripData, updateTripDat
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="trip-step-shell">
 
       {/* Header */}
       <motion.div

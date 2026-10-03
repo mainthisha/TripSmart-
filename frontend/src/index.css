@@ -626,3 +626,173 @@ body {
   .dash-panel-body   { padding:14px 15px; }
   .dash-panel-icon   { width:34px; height:34px; font-size:15px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   TRIPSMART 2026 — POLISHED DESKTOP LAYOUT / WOW LAYER
+   Keeps the original visual identity but removes the stretched
+   full-screen feeling and gives every page a premium breathing room.
+═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --page-max: 1500px;
+  --step-max: 1320px;
+  --page-gutter: 24px;
+  --panel-gap: 16px;
+}
+
+/* subtle premium atmosphere without making the UI noisy */
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(20,184,166,0.055), transparent 26%),
+    radial-gradient(circle at 88% 16%, rgba(99,102,241,0.055), transparent 25%),
+    #07080f;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.content-layer { width: 100%; }
+
+/* Main content is wide, but never awkwardly touches the screen edges. */
+.wizard-content {
+  width: min(calc(100% - 48px), var(--page-max));
+  margin: 0 auto;
+  padding: 0 0 72px;
+}
+
+.wizard-stage {
+  width: 100%;
+  max-width: var(--step-max);
+  margin: 0 auto;
+}
+
+.trip-step-shell {
+  width: 100%;
+  max-width: var(--step-max);
+  margin: 0 auto;
+}
+
+.dashboard-shell {
+  width: min(calc(100% - 48px), var(--page-max));
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+/* Progress strip follows the same visual width as the app. */
+.progress-shell {
+  width: min(calc(100% - 48px), var(--page-max));
+  margin: 0 auto;
+}
+
+.progress-inner {
+  width: 100%;
+  padding: 16px 4px 12px;
+}
+
+/* Give the wizard a stronger visual hierarchy. */
+.step-heading h1 {
+  text-shadow: 0 12px 45px rgba(99,102,241,0.16);
+}
+
+.step-heading p {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.destination-panel {
+  border-color: rgba(255,255,255,0.085) !important;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,0.38),
+    0 0 0 1px rgba(20,184,166,0.025),
+    inset 0 1px 0 rgba(255,255,255,0.045);
+}
+
+.destination-grid {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45,212,191,0.28) transparent;
+}
+
+.destination-grid > button {
+  min-height: 150px;
+}
+
+/* A little more depth on every interactive card. */
+.destination-grid > button,
+.trip-step-shell .glass-card,
+.trip-step-shell .glass-card-strong {
+  transition:
+    transform 0.28s cubic-bezier(0.22,1,0.36,1),
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+.destination-grid > button:hover {
+  border-color: rgba(45,212,191,0.30) !important;
+  box-shadow:
+    0 16px 38px rgba(0,0,0,0.32),
+    0 0 24px rgba(20,184,166,0.07);
+}
+
+/* Dashboard hero: less empty, more premium. */
+.dashboard-shell > div:first-child {
+  box-shadow:
+    0 28px 90px rgba(0,0,0,0.32),
+    inset 0 1px 0 rgba(255,255,255,0.035);
+}
+
+.dashboard-shell .dash-panel {
+  margin-bottom: var(--panel-gap);
+}
+
+/* Better desktop density while keeping readable cards. */
+@media (min-width: 1280px) {
+  .dashboard-shell .dash-panel-body { padding: 24px 30px; }
+  .dashboard-shell .dash-panel-header { padding: 20px 30px 18px; }
+}
+
+@media (min-width: 1600px) {
+  :root { --page-max: 1560px; --step-max: 1380px; }
+}
+
+@media (max-width: 900px) {
+  .wizard-content,
+  .dashboard-shell,
+  .progress-shell {
+    width: min(calc(100% - 28px), 100%);
+  }
+  .destination-grid > button { min-height: 135px; }
+}
+
+@media (max-width: 640px) {
+  .wizard-content,
+  .dashboard-shell,
+  .progress-shell {
+    width: calc(100% - 20px);
+  }
+  .progress-inner { padding-left: 0; padding-right: 0; }
+  .destination-grid { max-height: 440px; }
+}
+
+/* Reduce motion for users who request it. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

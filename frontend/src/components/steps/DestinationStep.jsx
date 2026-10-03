@@ -48,12 +48,12 @@ export default function DestinationStep({ onNext, tripData, updateTripData }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="trip-step-shell">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-8"
+        className="text-center step-heading mb-8"
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -79,7 +79,7 @@ export default function DestinationStep({ onNext, tripData, updateTripData }) {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.15 }}
-        className="glass-card-strong p-6 sm:p-8"
+        className="glass-card-strong destination-panel p-6 sm:p-8"
       >
         {/* Search Bar */}
         <div className="relative mb-6">
@@ -190,7 +190,7 @@ export default function DestinationStep({ onNext, tripData, updateTripData }) {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-h-72 overflow-y-auto pr-1"
+                className="destination-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 max-h-96 overflow-y-auto pr-1"
               >
                 {filtered.map((dest) => (
                   <motion.button

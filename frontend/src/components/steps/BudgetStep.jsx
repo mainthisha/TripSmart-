@@ -121,7 +121,7 @@ export default function BudgetStep({ onNext, onBack, tripData, updateTripData })
   const sliderPercent = ((budget - MIN_BUDGET) / (MAX_BUDGET - MIN_BUDGET)) * 100
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="trip-step-shell">
 
       {/* Header */}
       <motion.div

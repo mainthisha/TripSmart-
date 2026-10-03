@@ -222,7 +222,7 @@ function Dashboard({ tripData, goBack, resetApp, t }) {
   ]
 
   return (
-    <div style={{ width:'100%' }}>
+    <div className="dashboard-shell">
 
       {/* ══ HERO HEADER ══ */}
       <motion.div
@@ -617,7 +617,8 @@ function StepProgress({ currentStep, onStepClick }) {
   const pct = ((currentStep-1) / (TOTAL_STEPS-1)) * 100
   return (
     <div className="content-layer" style={{ paddingTop:'68px' }}>
-      <div style={{ maxWidth:'700px', margin:'0 auto', padding:'16px 20px 12px' }}>
+      <div className="progress-shell">
+        <div className="progress-inner">
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:'14px' }}>
           {STEP_LABELS.map((label,i) => {
             const id=i+1, done=id<currentStep, act=id===currentStep
@@ -654,6 +655,7 @@ function StepProgress({ currentStep, onStepClick }) {
           <span style={{ color:'rgba(160,168,200,0.22)', fontSize:'10px', fontWeight:'500', letterSpacing:'0.14em', textTransform:'uppercase', fontFamily:'Plus Jakarta Sans,sans-serif' }}>
             Step {currentStep} of {TOTAL_STEPS} — {STEP_LABELS[currentStep-1]}
           </span>
+        </div>
         </div>
       </div>
     </div>
@@ -736,7 +738,7 @@ export default function App() {
       <StepProgress currentStep={currentStep} onStepClick={setCurrentStep}/>
 
       {/* Step content */}
-      <div className="content-layer" style={{ padding:'0 16px 60px' }}>
+      <div className="content-layer wizard-content">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentStep}
@@ -744,10 +746,7 @@ export default function App() {
             animate={{ opacity:1, x:0, scale:1 }}
             exit={{ opacity:0, x:-32, scale:0.99 }}
             transition={{ duration:0.28, ease:[0.22,1,0.36,1] }}
-            style={{
-              maxWidth: currentStep===6 ? '1080px' : '720px',
-              margin:'0 auto', width:'100%',
-            }}
+            className="wizard-stage"
           >
             {renderStep()}
           </motion.div>
